@@ -1,5 +1,6 @@
 from src.rider_config import RiderConfig
 from src.debug_buttons_functions import DebugButtonFunctions
+from src.devops_config import DevopsButtonFunctions
 from src.obs_buttons import OBSConfig
 from src.oled import Oled
 from src.register_buttons import setup_buttons
@@ -33,11 +34,13 @@ screen.set_standby()
 kbd = Keyboard(usb_hid.devices)
 
 # Create the profile configurations
+devops_config = DevopsButtonFunctions(screen, kbd)
 debug_config = DebugButtonFunctions(screen, kbd)
 rider_config = RiderConfig(screen, kbd)
 obs_config = OBSConfig(screen, kbd)
 
 configs = [
+    devops_config,
     debug_config,
     rider_config,
     obs_config
